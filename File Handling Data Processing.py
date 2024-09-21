@@ -22,9 +22,6 @@ while y < len(dataList):
         dataList.pop(y)
     else:
         y += 1
-fileOut = open("parsed_access.log", "w")
-fileOut.writelines(dataList)
-fileOut.close()
 print("Log entries without 'BotPoke' is", y)
 
 
