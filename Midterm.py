@@ -1,5 +1,5 @@
 """
-Date:   10-18-2024
+Date:   10-24-2024
 Author: Samantha A Erickson
 Description:
     This program is designed to sort digital photos and videos of 
@@ -15,11 +15,11 @@ extensions = {".gif":"GIF_Photos",   ".heic":"HEIC_Photos",
               ".webp":"WEBP_Photos" }
 
 def rename_files(count, dir, ext):
-    myPics.sort(key = os.path._getexitif())
     start = timeit.default_timer()
     
     for type, name in ext.items():
-        myPics = glob.glob(os.path.join(dir, type))
+        myPics = glob.glob(os.path.join(dir, "*" + type))
+        myPics.sort(key = os.path.getctime)
         
         for index, path in enumerate(myPics):
             newName = name + f"{str(index + 1).zfill(2)}" + type
@@ -34,7 +34,6 @@ def sort_files(count, dir, ext):
     start = timeit.default_timer()
 
     for file in os.listdir(dir):
-        count += 1
         filePath = os.path.join(dir, file)
         
         if os.path.isfile(filePath):
@@ -46,16 +45,16 @@ def sort_files(count, dir, ext):
                 os.makedirs(folderPath,exist_ok = True)
                 newPath = os.path.join(folderPath, file)
                 shutil.move(filePath, newPath)
+                count += 1
             
             else:
-                count -= 1
                 print(f"Skipped file:{file} because extension not listed.")
     
     elapsed = timeit.default_timer() - start
     print_results("sort_files", count, elapsed)
 
 def print_results(caller, sum, time):
-    if caller == "print_results":
+    if caller == "rename_files":
         print("\nFiles renamed Successfully.")
         print("The total number of files renamed is:", sum)
         print("The total time it took to search is: %.9f seconds\n" % time)
