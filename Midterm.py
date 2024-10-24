@@ -17,10 +17,12 @@ extensions = {".gif":"GIF_Photos",   ".heic":"HEIC_Photos",
 def rename_files(count, dir, ext):
     start = timeit.default_timer()
     
+    #Locates files & sorted by date
     for type, name in ext.items():
         myPics = glob.glob(os.path.join(dir, "*" + type))
         myPics.sort(key = os.path.getctime)
         
+        #Renames the files
         for index, path in enumerate(myPics):
             newName = name + f"{str(index + 1).zfill(2)}" + type
             newPath = os.path.join(dir, newName)
@@ -33,12 +35,16 @@ def rename_files(count, dir, ext):
 def sort_files(count, dir, ext):
     start = timeit.default_timer()
 
+    #Locates files
     for file in os.listdir(dir):
         filePath = os.path.join(dir, file)
         
+        #Separating file from path
         if os.path.isfile(filePath):
             ext = os.path.splitext(file)[1].lower()
             
+            #Locates new path, join new path to file, places file in new location
+            #If folder for file does not exist, it will create folder
             if ext in extensions:
                 folder = extensions[ext]
                 folderPath = os.path.join(dir, folder)
