@@ -8,7 +8,7 @@ Description:
 import os, shutil, timeit, glob
 
 tally = 0
-directory = "C:/Users/samma/OneDrive/Pictures"
+directory = "C:/Users/samma/OneDrive/Pictures/Sample"
 extensions = {".gif":"GIF_Photos",   ".heic":"HEIC_Photos",
               ".jpeg":"JPEG_Photos", ".jpg":"JPG_Photos",
               ".mov":"MOV_Videos",   ".png":"PNG_Photos",
