@@ -1,10 +1,3 @@
-"""
-Date:   10-24-2024
-Author: Samantha A Erickson
-Description:
-    This program is designed to sort digital photos and videos of 
-    various types by type and then rename them in structure format.
-"""
 import os, shutil, timeit, glob
 
 tally = 0

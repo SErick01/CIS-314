@@ -1,0 +1,19 @@
+```toml
+[build-system]
+requires = ["setuptools", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "SortOrganize"
+version = "0.1.0"
+description = "This program is designed to sort documents of various types by type and then rename them in structure format."
+readme = "README.md"
+license = {file = "LICENSE"}
+authors = [{name = "Samantha Ann Erickson", email = "serick01@rams.shepherd.edu"}]
+dependencies = [
+    "some_package>=1.0.0",
+]
+
+[project.urls]
+"Homepage" = "https://yourhomepage.com"
+"Repository" = "https://github.com/yourusername/your_project_name"
