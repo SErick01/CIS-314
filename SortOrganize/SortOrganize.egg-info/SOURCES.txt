@@ -1,0 +1,9 @@
+LICENSE
+README.md
+pyproject.toml
+SortOrganize/__init__.py
+SortOrganize/main.py
+SortOrganize.egg-info/PKG-INFO
+SortOrganize.egg-info/SOURCES.txt
+SortOrganize.egg-info/dependency_links.txt
+SortOrganize.egg-info/top_level.txt

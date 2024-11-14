@@ -1,4 +1,3 @@
-```toml
 [build-system]
 requires = ["setuptools", "wheel"]
 build-backend = "setuptools.build_meta"
@@ -10,10 +9,6 @@ description = "This program is designed to sort documents of various types by ty
 readme = "README.md"
 license = {file = "LICENSE"}
 authors = [{name = "Samantha Ann Erickson", email = "serick01@rams.shepherd.edu"}]
-dependencies = [
-    "some_package>=1.0.0",
-]
 
 [project.urls]
-"Homepage" = "https://yourhomepage.com"
-"Repository" = "https://github.com/yourusername/your_project_name"
+"Repository" = "https://github.com/SErick01/CIS-314/tree/main/SortOrganize"
