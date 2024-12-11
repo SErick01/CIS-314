@@ -1,4 +1,4 @@
-from FinalProject.fileManagerClass import FileManager
+from fileManagerClass import FileManager
 
 
 class ActionController:

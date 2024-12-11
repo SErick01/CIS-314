@@ -37,6 +37,17 @@ extensions = {
     ".rtf": "RTF_Documents", ".sqlite": "SQLite_Databases", ".yml": "YAML_Files"
 }
 
+categories = {
+    "Images": [".bmp", ".gif", ".heic", ".jpeg", ".jpg", ".png", ".tiff", ".webp"],
+    "Videos": [".avi", ".mkv", ".mov", ".mp4", ".mpeg", ".wmv"],
+    "Audio": [".aac", ".flac", ".mp3", ".ogg", ".wav", ".wma"],
+    "Documents": [".doc", ".docx", ".pdf", ".ppt", ".pptx", ".txt", ".xls", ".xlsx"],
+    "Compressed": [".7z", ".bz2", ".gz", ".rar", ".tar", ".zip"],
+    "Programming": [".c", ".cpp", ".cs", ".html", ".java", ".js", ".json", ".php", ".py", ".rb", ".xml"],
+    "Executable": [".exe", ".msi", ".sh", ".bat"],
+    "Miscellaneous": [".csv", ".ics", ".md", ".rtf", ".sqlite", ".yml"]
+}
+
 
 class FileManager:
 
