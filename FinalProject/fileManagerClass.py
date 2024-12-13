@@ -1,6 +1,5 @@
 import os, shutil, glob
 
-
 extensions = {
     # Images
     ".bmp": "BMP_Images", ".gif": "GIF_Images", ".heic": "HEIC_Images",
@@ -48,30 +47,46 @@ categories = {
     "Miscellaneous": [".csv", ".ics", ".md", ".rtf", ".sqlite", ".yml"]
 }
 
-
 class FileManager:
 
-    @staticmethod
-    def copy_files(src, dest, ext_list):
+    def ensure_new_folder(self, dest, folder_name):
+        newFolderPath = os.path.join(dest, folder_name)
+        os.makedirs(newFolderPath, exist_ok=True)
+        return newFolderPath
+
+    def copy_files(self, src, dest, ext_list, folder_name=None):
+        if folder_name:
+            dest = self.ensure_new_folder(dest, folder_name)
+
         for file in os.listdir(src):
+            filePath = os.path.join(src, file)
+
             if os.path.splitext(file)[1] in ext_list:
-                shutil.copy(os.path.join(src, file), dest)
+                destPath = os.path.join(dest, file)
+                shutil.copy(filePath, destPath)
+                print(f"Copied '{file}' to '{dest}'.")
+        return dest
 
-    @staticmethod
-    def sort_files(src, dest, ext_list):
+    def sort_files(self, src, dest, ext_list, folder_name=None):
         for file in os.listdir(src):
-            file_ext = os.path.splitext(file)[1].lower()
-            if file_ext in ext_list:
-                folder = extensions.get(file_ext, "Other_Files")
-                folder_path = os.path.join(dest, folder)
-                os.makedirs(folder_path, exist_ok=True)
-                shutil.move(os.path.join(src, file), folder_path)
+            filePath = os.path.join(src, file)
+            fileExt = os.path.splitext(file)[1]
 
-    @staticmethod
-    def rename_files(src, ext_list, prefix):
+            if fileExt in ext_list:
+                subfolderName = extensions.get(fileExt, "Other_Files")
+                folderPath = os.path.join(dest, subfolderName)
+                os.makedirs(folderPath, exist_ok=True)
+                destPath = os.path.join(folderPath, file)
+                shutil.move(filePath, destPath)
+                print(f"Moved '{file}' to '{folderPath}'.")
+
+    def rename_files(self, src, ext_list, prefix):
         for ext in ext_list:
             files = glob.glob(os.path.join(src, f"*{ext}"))
             files.sort(key=os.path.getctime)
-            for index, file in enumerate(files):
-                new_name = f"{prefix}_{str(index + 1).zfill(3)}{ext}"
-                os.rename(file, os.path.join(src, new_name))
+
+            for index, file_path in enumerate(files):
+                newName = f"{prefix}_{str(index + 1).zfill(3)}{ext}"
+                destPath = os.path.join(src, newName)
+                os.rename(file_path, destPath)
+                print(f"Renamed '{file_path}' to '{newName}'.")

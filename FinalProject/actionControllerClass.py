@@ -1,25 +1,32 @@
 from fileManagerClass import FileManager
 
-
 class ActionController:
-
     def __init__(self):
-        self.file_manager = FileManager()
+        self.fileManager = FileManager()
 
-    def execute_action(self, action, src, dest, ext_list, prefix):
+    def execute_action(self, action, src, dest, ext_list, prefix, folder_name):
         if action == "Copy Only":
-            self.file_manager.copy_files(src, dest, ext_list)
-        elif action == "Sort Only":
-            self.file_manager.sort_files(src, dest, ext_list)
+            self.fileManager.copy_files(src, dest, ext_list, folder_name)
+            
         elif action == "Rename Only":
-            self.file_manager.rename_files(src, ext_list, prefix)
+            self.fileManager.rename_files(src, ext_list, prefix)
+
+        elif action == "Sort Only":
+            self.fileManager.sort_files(src, dest, ext_list, folder_name)
+            
+        elif action == "Copy & Rename":
+            finalDest = self.fileManager.copy_files(src, dest, ext_list, folder_name)
+            self.fileManager.rename_files(finalDest, ext_list, prefix)
+        
         elif action == "Copy & Sort":
-            self.file_manager.copy_files(src, dest, ext_list)
-            self.file_manager.sort_files(dest, dest, ext_list)
-        elif action == "Sort & Rename":
-            self.file_manager.sort_files(src, dest, ext_list)
-            self.file_manager.rename_files(dest, ext_list, prefix)
-        elif action == "Copy & Sort & Rename":
-            self.file_manager.copy_files(src, dest, ext_list)
-            self.file_manager.sort_files(dest, dest, ext_list)
-            self.file_manager.rename_files(dest, ext_list, prefix)
+            finalDest = self.fileManager.copy_files(src, dest, ext_list, folder_name)
+            self.fileManager.sort_files(finalDest, finalDest, ext_list, None)
+        
+        elif action == "Rename & Sort":
+            self.fileManager.rename_files(src, ext_list, prefix)
+            self.fileManager.sort_files(src, dest, ext_list, folder_name)
+
+        elif action == "Copy & Rename & Sort":
+            finalDest = self.fileManager.copy_files(src, dest, ext_list, folder_name)
+            self.fileManager.rename_files(finalDest, ext_list, prefix)
+            self.fileManager.sort_files(finalDest, finalDest, ext_list, None)
