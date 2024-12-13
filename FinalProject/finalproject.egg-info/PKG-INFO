@@ -1,0 +1,33 @@
+Metadata-Version: 2.1
+Name: finalproject
+Version: 1.0.0
+Summary: A file management application with a GUI built using PyQt6.
+Author: Samantha Ann Erickson
+Author-email: serick01@rams.shepherd.edu
+License: GPL-3.0
+Classifier: Programming Language :: Python :: 3
+Classifier: License :: OSI Approved :: GNU General Public License v3 (GPLv3)
+Classifier: Operating System :: OS Independent
+Requires-Python: >=3.6
+Description-Content-Type: text/markdown
+License-File: LICENSE
+Requires-Dist: PyQt6
+
+# FinalProject
+A simple file management tool with a GUI built using PyQt6.
+
+## Features:
+- Copy files to a destination.
+- Rename files with custom prefixes.
+- Sort files into subfolders by file type.
+
+## How to Use
+1. Run the program using:
+    ```bash
+    python -m finalproject.main
+    ```
+2. Use the GUI to perform actions.
+
+## Requirements
+- Python 3.6+
+- PyQt6
